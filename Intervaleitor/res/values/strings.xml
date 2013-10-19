@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Intervaleitor</string>
+    <string name="action_settings">Settings</string>
+    <string name="Saludo">¡INTERVALEITOR!</string>
+    <string name="Saludo2">tu calculadora de acordes</string>
+    <string name="BtnDo">do</string>
+    <string name="BtnRe">re</string>
+    <string name="BtnMi">mi</string>
+    <string name="BtnFa">fa</string>
+    <string name="BtnSol">sol</string>
+    <string name="BtnLa">la</string>
+    <string name="BtnSi">si</string>
+    <string name="BtnAscendente">ascendente</string>
+    <string name="BtnDescendente">descendente</string>
+
+</resources>
