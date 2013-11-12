@@ -12,6 +12,6 @@
     <string name="pencil_edit">edit</string>
     <string name="eraser">erase</string>
     <string name="save_diskette_floppy_disk">save</string>
-    <string name="new">new</string>
+    <string name="new_draw">new</string>
 
 </resources>

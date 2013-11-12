@@ -18,9 +18,9 @@
             android:id="@+id/new_btn"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:src="@drawable/new"
+            android:src="@drawable/new_draw"
             android:text="@string/start_new" 
-            android:contentDescription="@string/new" />
+            android:contentDescription="@string/new_draw" />
 
         <ImageButton
             android:id="@+id/draw_btn"
@@ -95,7 +95,7 @@
                 android:contentDescription="@string/paint"
                 android:onClick="paintClicked"
                 android:src="@drawable/paint"
-                android:tag="FFFF0000" />
+                android:tag="#FFFF0000" />
 
             <ImageButton
                 android:layout_width="@dimen/large_brush"
