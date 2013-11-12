@@ -8,11 +8,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.view.MotionEvent;
+import android.util.TypedValue;
 
 public class DrawingView extends View {
 	// native variables:
-
+	
+	// brush sizes
+	private float brushSize, lastBrushSize;
 	// drawing path
 	private Path drawPath;
 	// drawing and canvas paint
@@ -32,14 +37,16 @@ public class DrawingView extends View {
 
 	// methods
 	private void setupDrawing() {
+		// setup default brush size:
+		brushSize = getResources().getInteger(R.integer.medium_size);
+		setLastBrushSize(brushSize);
 		// get drawing area setup for interaction:
-
 		drawPath = new Path();
 		drawPaint = new Paint();
 
 		drawPaint.setColor(paintColor);
 		drawPaint.setAntiAlias(true);
-		drawPaint.setStrokeWidth(20);
+		drawPaint.setStrokeWidth(brushSize);
 		drawPaint.setStrokeJoin(Paint.Join.ROUND);
 		drawPaint.setStrokeCap(Paint.Cap.ROUND);
 
@@ -91,5 +98,17 @@ public class DrawingView extends View {
 		invalidate();
 		paintColor = Color.parseColor(newColor);
 		drawPaint.setColor(paintColor);
+	}
+	public void setBrushSize(float newSize) {
+		// update size
+		float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, getResources().getDisplayMetrics());
+		brushSize = pixelAmount;
+		drawPaint.setStrokeWidth(brushSize);
+	}
+	public void setLastBrushSize(float lastSize) {
+		lastBrushSize = lastSize;
+	}
+	public float getLastBrushSize() {
+		return lastBrushSize;
 	}
 }

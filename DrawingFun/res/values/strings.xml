@@ -13,5 +13,8 @@
     <string name="eraser">erase</string>
     <string name="save_diskette_floppy_disk">save</string>
     <string name="new_draw">new</string>
+    <string name="sml">Small</string>
+    <string name="med">Medium</string>
+    <string name="lrg">Large</string>
 
 </resources>
