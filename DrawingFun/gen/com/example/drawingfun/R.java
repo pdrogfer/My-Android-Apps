@@ -25,9 +25,13 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+		public static int paint_pressed;
+		public static int paint;
     }
     public static final class id {
         public static final int action_settings=0x7f090000;
+		public static int paint_colors;
+		public static int drawing;
     }
     public static final class integer {
         public static final int large_size=0x7f050002;

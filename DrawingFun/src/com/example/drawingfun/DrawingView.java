@@ -5,11 +5,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.view.MotionEvent;
 
-public class DrawinView extends View {
+public class DrawingView extends View {
 	// native variables:
 
 	// drawing path
@@ -24,13 +25,13 @@ public class DrawinView extends View {
 	private Bitmap canvasBitmap;
 
 	// constructors
-	public DrawinView(Context context, AttributeSet attrs) {
+	public DrawingView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		setupDrawin();
+		setupDrawing();
 	}
 
 	// methods
-	private void setupDrawin() {
+	private void setupDrawing() {
 		// get drawing area setup for interaction:
 
 		drawPath = new Path();
@@ -84,5 +85,11 @@ public class DrawinView extends View {
 		}
 		invalidate();
 		return true;
+	}
+	public void setColor(String newColor) {
+		// set color
+		invalidate();
+		paintColor = Color.parseColor(newColor);
+		drawPaint.setColor(paintColor);
 	}
 }
