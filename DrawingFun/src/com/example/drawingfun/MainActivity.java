@@ -34,11 +34,14 @@ public class MainActivity extends Activity implements OnClickListener {
 		smallBrush = getResources().getInteger(R.integer.small_size);
 		mediumBrush = getResources().getInteger(R.integer.medium_size);
 		largeBrush = getResources().getInteger(R.integer.large_size);
+		// set default brush size
+		drawView.setBrushSize(mediumBrush);
 
 		LinearLayout paintLayout = (LinearLayout) findViewById(R.id.paint_colors);
 		currPaint = (ImageButton) paintLayout.getChildAt(0);
 		currPaint.setImageDrawable(getResources().getDrawable(
 				R.drawable.paint_pressed));
+
 	}
 
 	@Override
@@ -74,14 +77,38 @@ public class MainActivity extends Activity implements OnClickListener {
 			final Dialog brushDialog = new Dialog(this);
 			brushDialog.setTitle("Brush size:");
 			brushDialog.setContentView(R.layout.brush_chooser);
-			
-			
-			
-			
-			
-			
+
+			ImageButton smallBtn = (ImageButton) brushDialog
+					.findViewById(R.id.small_brush);
+			smallBtn.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					drawView.setBrushSize(smallBrush);
+					drawView.setLastBrushSize(smallBrush);
+					brushDialog.dismiss();
+				}
+			});
+			ImageButton mediumBtn = (ImageButton) brushDialog
+					.findViewById(R.id.medium_brush);
+			mediumBtn.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					drawView.setBrushSize(mediumBrush);
+					drawView.setLastBrushSize(mediumBrush);
+					brushDialog.dismiss();
+				}
+			});
+			ImageButton largeBtn = (ImageButton) brushDialog
+					.findViewById(R.id.large_brush);
+			largeBtn.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					drawView.setBrushSize(largeBrush);
+					drawView.setLastBrushSize(largeBrush);
+					brushDialog.dismiss();
+				}
+			});
+			brushDialog.show();
 		}
-		
 	}
-	
 }
