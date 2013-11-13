@@ -15,7 +15,9 @@ import android.util.TypedValue;
 
 public class DrawingView extends View {
 	// native variables:
-	
+
+	// erasing active
+	private boolean erase = false;
 	// brush sizes
 	private float brushSize, lastBrushSize;
 	// drawing path
@@ -36,6 +38,16 @@ public class DrawingView extends View {
 	}
 
 	// methods
+	public void setErase(boolean isErase) {
+		// set erase to true or false...
+		erase = isErase;
+		// and proceed to erase, in case
+		if (erase) {
+			drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+		} else
+			drawPaint.setXfermode(null);
+	}
+
 	private void setupDrawing() {
 		// setup default brush size:
 		brushSize = getResources().getInteger(R.integer.medium_size);
@@ -94,21 +106,26 @@ public class DrawingView extends View {
 		invalidate();
 		return true;
 	}
+
 	public void setColor(String newColor) {
 		// set color
 		invalidate();
 		paintColor = Color.parseColor(newColor);
 		drawPaint.setColor(paintColor);
 	}
+
 	public void setBrushSize(float newSize) {
 		// update size
-		float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, getResources().getDisplayMetrics());
+		float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize,
+				getResources().getDisplayMetrics());
 		brushSize = pixelAmount;
 		drawPaint.setStrokeWidth(brushSize);
 	}
+
 	public void setLastBrushSize(float lastSize) {
 		lastBrushSize = lastSize;
 	}
+
 	public float getLastBrushSize() {
 		return lastBrushSize;
 	}
