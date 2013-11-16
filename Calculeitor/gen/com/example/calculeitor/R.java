@@ -24,7 +24,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080016;
+        public static final int action_settings=0x7f080017;
         public static final int btn_0=0x7f08000e;
         public static final int btn_1=0x7f080002;
         public static final int btn_2=0x7f080003;
@@ -35,18 +35,19 @@ public final class R {
         public static final int btn_7=0x7f08000a;
         public static final int btn_8=0x7f08000b;
         public static final int btn_9=0x7f08000c;
-        public static final int btn_add=0x7f080010;
-        public static final int btn_divide=0x7f080013;
-        public static final int btn_mult=0x7f080012;
-        public static final int btn_rest=0x7f080011;
-        public static final int editText_1=0x7f080015;
+        public static final int btn_add=0x7f080012;
+        public static final int btn_clear=0x7f08000f;
+        public static final int btn_divide=0x7f080015;
+        public static final int btn_mult=0x7f080014;
+        public static final int btn_rest=0x7f080013;
+        public static final int btn_result=0x7f080010;
         public static final int tableRow1=0x7f080001;
         public static final int tableRow2=0x7f080005;
         public static final int tableRow3=0x7f080009;
         public static final int tableRow4=0x7f08000d;
-        public static final int tableRow5=0x7f08000f;
+        public static final int tableRow5=0x7f080011;
         public static final int textView1=0x7f080000;
-        public static final int textView2=0x7f080014;
+        public static final int tv_result=0x7f080016;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -56,22 +57,10 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
-        public static final int add=0x7f05000c;
         public static final int app_name=0x7f050000;
-        public static final int cero=0x7f05000b;
-        public static final int divide=0x7f05000f;
-        public static final int eight=0x7f050009;
-        public static final int five=0x7f050006;
-        public static final int four=0x7f050005;
-        public static final int hint_1=0x7f050010;
-        public static final int mult=0x7f05000e;
-        public static final int nine=0x7f05000a;
-        public static final int one=0x7f050002;
-        public static final int rest=0x7f05000d;
-        public static final int seven=0x7f050008;
-        public static final int six=0x7f050007;
-        public static final int three=0x7f050004;
-        public static final int two=0x7f050003;
+        public static final int banner=0x7f050002;
+        public static final int hint_1=0x7f050003;
+        public static final int hint_result=0x7f050004;
     }
     public static final class style {
         /** 

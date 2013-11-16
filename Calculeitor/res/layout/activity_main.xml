@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="A SIMPLE CALCULATOR MACHINE"
+        android:text="@string/banner"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#000000"
@@ -32,7 +32,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:text="@string/one"
+            android:text="1"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
@@ -40,7 +40,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:text="@string/two"
+            android:text="2"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
@@ -48,7 +48,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:text="@string/three"
+            android:text="3"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </TableRow>
 
@@ -64,7 +64,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:text="@string/four"
+            android:text="4"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
@@ -72,7 +72,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:text="@string/five"
+            android:text="5"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
@@ -80,7 +80,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:text="@string/six"
+            android:text="6"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </TableRow>
 
@@ -96,7 +96,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:text="@string/seven"
+            android:text="7"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
@@ -104,7 +104,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:text="@string/eight"
+            android:text="8"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
@@ -112,7 +112,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:text="@string/nine"
+            android:text="9"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </TableRow>
 
@@ -125,10 +125,26 @@
 
         <Button
             android:id="@+id/btn_0"
-            android:layout_width="190dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:text="@string/cero"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:text="C"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/btn_result"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:text="R"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </TableRow>
 
@@ -145,7 +161,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:text="@string/add"
+            android:text="+"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
@@ -154,7 +170,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:text="@string/rest"
+            android:text="-"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
@@ -163,7 +179,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:text="@string/mult"
+            android:text="*"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
@@ -172,20 +188,20 @@
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:text="@string/divide"
+            android:text="/"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </TableRow>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText_1"
-        android:layout_alignRight="@+id/editText_1"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignRight="@+id/textView1"
         android:layout_below="@+id/tableRow5"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
-        android:hint="Result here"
+        android:hint="@string/hint_result"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
