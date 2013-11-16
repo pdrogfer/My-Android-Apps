@@ -129,4 +129,9 @@ public class DrawingView extends View {
 	public float getLastBrushSize() {
 		return lastBrushSize;
 	}
+	
+	public void startNew() {
+		drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+		invalidate();
+	}
 }

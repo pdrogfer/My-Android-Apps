@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import java.util.UUID;
 import android.provider.MediaStore;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	// create an instance of class DrawingView called drawView
 	private DrawingView drawView;
-	private ImageButton currPaint, drawBtn, eraseBtn;
+	private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn;
 	private float smallBrush, mediumBrush, largeBrush;
 
 	@Override
@@ -32,6 +33,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		drawBtn.setOnClickListener(this);
 		eraseBtn = (ImageButton) findViewById(R.id.erase_btn);
 		eraseBtn.setOnClickListener(this);
+		newBtn = (ImageButton) findViewById(R.id.new_btn);
+		newBtn.setOnClickListener(this);
+		saveBtn = (ImageButton) findViewById(R.id.save_btn);
+		saveBtn.setOnClickListener(this);
 
 		smallBrush = getResources().getInteger(R.integer.small_size);
 		mediumBrush = getResources().getInteger(R.integer.medium_size);
@@ -53,7 +58,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 
 	public void paintClicked(View view) {
-		// if last action was erase, activate drawing again and restore brush size
+		// if last action was erase, activate drawing again and restore brush
+		// size
 		drawView.setErase(false);
 		drawView.setBrushSize(drawView.getLastBrushSize());
 		// use chosen color
@@ -77,7 +83,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		if (view.getId() == R.id.draw_btn) {
 			// draw_button clicked
 			final Dialog brushDialog = new Dialog(this);
-			brushDialog.setTitle("Brush size:");
+			brushDialog.setTitle(R.string.brush_size);
 			brushDialog.setContentView(R.layout.brush_chooser);
 
 			ImageButton smallBtn = (ImageButton) brushDialog.findViewById(R.id.small_brush);
@@ -86,7 +92,8 @@ public class MainActivity extends Activity implements OnClickListener {
 				public void onClick(View v) {
 					drawView.setBrushSize(smallBrush);
 					drawView.setLastBrushSize(smallBrush);
-					drawView.setErase(false); // in case it's active because of last action
+					drawView.setErase(false); // in case it's active because of
+												// last action
 					brushDialog.dismiss();
 				}
 			});
@@ -111,13 +118,12 @@ public class MainActivity extends Activity implements OnClickListener {
 				}
 			});
 			brushDialog.show();
-		}
-		else if(view.getId() == R.id.erase_btn) {
+		} else if (view.getId() == R.id.erase_btn) {
 			// switch to erase mode, and choose size
 			final Dialog brushDialog = new Dialog(this);
-			brushDialog.setTitle("Eraser size:");
+			brushDialog.setTitle(R.string.eraser_size);
 			brushDialog.setContentView(R.layout.brush_chooser);
-			
+
 			ImageButton smallBtn = (ImageButton) brushDialog.findViewById(R.id.small_brush);
 			smallBtn.setOnClickListener(new OnClickListener() {
 				@Override
@@ -146,19 +152,63 @@ public class MainActivity extends Activity implements OnClickListener {
 				}
 			});
 			brushDialog.show();
+		} else if (view.getId() == R.id.new_btn) {
+			// delete all and start a new drawing
+			// first, the warning
+			AlertDialog.Builder newDialog = new AlertDialog.Builder(this);
+			newDialog.setTitle(R.string.new_drawing);
+			newDialog.setMessage(R.string.warning_new_drawing);
+			newDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					drawView.startNew();
+					dialog.dismiss();
+				}
+			});
+			newDialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+				}
+			});
+			newDialog.show();
+		} else if (view.getId() == R.id.save_btn) {
+			// save drawing
+			AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
+			saveDialog.setTitle(R.string.save_drawing);
+			saveDialog.setMessage(R.string.save_confirm);
+			saveDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// save drawing
+					drawView.setDrawingCacheEnabled(true);
+					String imgSaved = MediaStore.Images.Media.insertImage(getContentResolver(),
+							drawView.getDrawingCache(), UUID.randomUUID().toString() + ".png",
+							"drawing");
+					if (imgSaved != null) {
+						Toast savedToast = Toast.makeText(getApplicationContext(),
+								R.string.drawing_saved, Toast.LENGTH_SHORT);
+						savedToast.show();
+					} else {
+						Toast unsavedToast = Toast.makeText(getApplicationContext(),
+								R.string.drawing_not_saved, Toast.LENGTH_SHORT);
+						unsavedToast.show();
+					}
+					drawView.destroyDrawingCache();
+				}
+			});
+			saveDialog.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// don't save
+					dialog.cancel();
+				}
+			});
+			saveDialog.show();
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

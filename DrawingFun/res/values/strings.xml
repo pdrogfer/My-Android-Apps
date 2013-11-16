@@ -16,5 +16,15 @@
     <string name="sml">Small</string>
     <string name="med">Medium</string>
     <string name="lrg">Large</string>
-
+    <string name="brush_size">Brush size:</string>
+    <string name="eraser_size">Eraser size:</string>
+    <string name="new_drawing">New drawing</string>
+    <string name="warning_new_drawing">Start new drawing? (you will loose the current drawing)</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
+    <string name="save_drawing">Save Drawing</string>
+	<string name="save_confirm">Save drawing to device Gallery?</string>
+	<string name="drawing_saved">Drawing saved to Gallery!</string>
+	<string name="drawing_not_saved">Oops! Image could not be saved</string>
 </resources>
