@@ -1,6 +1,10 @@
 package com.example.youdothemath;
 
 import android.os.Bundle;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.app.Activity;
@@ -12,9 +16,12 @@ import android.widget.TextView;
 // TODO A–adir sonidos a los clicks y respuestas corectas e incorrectas
 public class MainActivity extends Activity implements OnClickListener {
 
-	TextView intro;
+	private TextView intro;
 	private Button playBtn, helpBtn, highBtn;
-	Typeface myFont;
+	private Typeface myFont;
+	private String[] levelNames = {"Easy", "Medium","Hard"};
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +58,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		// respond to clicks
 		if (v.getId() == R.id.play_btn) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this); 
 
 		}
 		if (v.getId() == R.id.help_btn) {

@@ -3,13 +3,13 @@
     android:dither="true" >
 
     <gradient
-        android:angle="90"
-        android:startColor="#ff669999"
-        android:endColor="#ff99ffcc" />
+        android:angle="270"
+        android:startColor="@color/c_btn_background_top"
+        android:endColor="@color/c_btn_background_bottom" />
     <corners 
         android:radius="20dp"/>
     <stroke 
-        android:color="#003333"
-        android:width="2dp"/>
+        android:color="@color/btn_stroke"
+        android:width="1dp"/>
 
 </shape>

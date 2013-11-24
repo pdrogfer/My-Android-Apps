@@ -11,7 +11,16 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int colors=0x7f070000;
+        /**  list of color values 
+         */
+        public static final int app_background_bottom=0x7f040000;
+        public static final int app_background_top=0x7f040001;
+        public static final int btn_stroke=0x7f040007;
+        public static final int btn_text=0x7f040006;
+        public static final int c_btn_background_bottom=0x7f040004;
+        public static final int c_btn_background_top=0x7f040005;
+        public static final int num_btn_background_bottom=0x7f040002;
+        public static final int num_btn_background_top=0x7f040003;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -20,8 +29,8 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
         public static final int app_back=0x7f020000;
@@ -68,9 +77,9 @@ public final class R {
         public static final int main=0x7f080000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int help_info=0x7f050002;
+        public static final int action_settings=0x7f060001;
+        public static final int app_name=0x7f060000;
+        public static final int help_info=0x7f060002;
     }
     public static final class style {
         /** 
@@ -94,13 +103,16 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
+        /**  menu buttons style 
+         */
+        public static final int MenuButtons=0x7f070003;
         /**  number buttons style 
          */
-        public static final int NumberButtons=0x7f060002;
+        public static final int NumberButtons=0x7f070002;
     }
 }

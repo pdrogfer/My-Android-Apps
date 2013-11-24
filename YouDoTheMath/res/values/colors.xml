@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- list of color values -->
+    <color name="app_background_bottom">#2CB8F0</color>
+    <color name="app_background_top">#00487F</color>
+    <color name="num_btn_background_bottom">#6A6A6A</color>
+    <color name="num_btn_background_top">#D8D8D8</color>
+    <color name="c_btn_background_bottom">#6A6A6A</color>
+    <color name="c_btn_background_top">#D8D8D8</color>
+    <color name="btn_text">#000000</color>
+    <color name="btn_stroke">#A5A3A3</color>
+
+</resources>
