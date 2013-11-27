@@ -22,11 +22,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlayGame" >
+        <activity
+            android:name="com.example.youdothemath.PlayGame"
+            android:configChanges="keyboardHidden|orientation|screenSize" >
+            <category android:name="android.intent.category.DEFAULT" />
         </activity>
-        <activity android:name=".HowToPlay" >
+        <activity android:name="com.example.youdothemath.HowToPlay" >
+            <category android:name="android.intent.category.DEFAULT" />
         </activity>
-        <activity android:name="HighScores" >
+        <activity android:name="com.example.youdothemath.HighScores" >
+            <category android:name="android.intent.category.DEFAULT" />
         </activity>
     </application>
 

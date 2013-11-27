@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.app.Activity;
@@ -13,15 +14,13 @@ import android.view.Menu;
 import android.widget.Button;
 import android.widget.TextView;
 
-// TODO A–adir sonidos a los clicks y respuestas corectas e incorrectas
+// TODO A–adir sonidos a los clicks y respuestas correctas e incorrectas
 public class MainActivity extends Activity implements OnClickListener {
 
 	private TextView intro;
 	private Button playBtn, helpBtn, highBtn;
 	private Typeface myFont;
-	private String[] levelNames = {"Easy", "Medium","Hard"};
-	
-	
+	private String[] levelNames = { "Easy", "Medium", "Hard" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,15 +57,48 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		// respond to clicks
 		if (v.getId() == R.id.play_btn) {
-			AlertDialog.Builder builder = new AlertDialog.Builder(this); 
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("Choose a level").setSingleChoiceItems(levelNames, 0,
+					new DialogInterface.OnClickListener() {
 
-		}
-		if (v.getId() == R.id.help_btn) {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+							// start gameplay
+							startPlay(which);
 
-		}
-		if (v.getId() == R.id.high_btn) {
+						}
+					});
+			AlertDialog ad = builder.create();
+			ad.show();
+		} else if (v.getId() == R.id.help_btn) {
+			// the Intent launch is delegated to startHelp() function
+			startHelp();
+
+		} else if (v.getId() == R.id.high_btn) {
+			// as above
+			startHigh();
 		}
 
+	}
+
+	private void startPlay(int chosenLevel) {
+		// start gameplay
+		Intent playIntent = new Intent(this, PlayGame.class);
+		playIntent.putExtra("level", chosenLevel);
+		this.startActivity(playIntent);
+	}
+
+	private void startHelp() {
+		// show the help screen
+		Intent helpIntent = new Intent(this, HowToPlay.class);
+		this.startActivity(helpIntent);
+	}
+	
+	private void startHigh() {
+		// show the high scores view
+		Intent highIntent = new Intent(this, HighScores.class);
+		this.startActivity(highIntent);
 	}
 
 }

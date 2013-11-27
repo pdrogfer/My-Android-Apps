@@ -39,7 +39,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:padding="20dp"
-            android:text="HIGER SCORES"
+            android:text="BEST SCORES"
             android:textColor="#ffffffff"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -55,9 +55,6 @@
             android:textColor="#ffffffff"
             android:textSize="22sp"
             android:textStyle="bold" >
-        </TextView>
-
-        <TextView>
         </TextView>
     </RelativeLayout>
 
