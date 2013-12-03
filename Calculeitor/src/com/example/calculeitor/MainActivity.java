@@ -73,7 +73,12 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO key entry
+		// key entry
+		// TODO Not Efficient: it checks all possible conditions. Use "else if"
+		// TODO Set tags for numbers and recover and parse the one corresponding
+		// TODO To the button clicked for use in logic
+		// TODO 
+
 		if (v.getId() == R.id.btn_1) {
 			if (operator == "")
 				tempVal_1 += "1";
@@ -137,14 +142,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		// now the operators
 		if (v.getId() == R.id.btn_add) {
 			operator = " + ";
-		}
-		if (v.getId() == R.id.btn_rest) {
+		} else if (v.getId() == R.id.btn_rest) {
 			operator = " - ";
-		}
-		if (v.getId() == R.id.btn_mult) {
+		} else if (v.getId() == R.id.btn_mult) {
 			operator = " * ";
-		}
-		if (v.getId() == R.id.btn_divide) {
+		} else if (v.getId() == R.id.btn_divide) {
 			operator = " / ";
 		}
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Intervalator2</string>
+    <string name="action_settings">Settings</string>
+    <string name="from">From:</string>
+    <string name="selNoteBtn">Select note</string>
+    <string name="to">To:</string>
+    <string name="direction">Direction:</string>
+    <string name="dirUp">Up</string>
+    <string name="dirDown">Down</string>
+    <string name="goBtn">Go</string>
+    <string name="resetBtn">Reset</string>
+    <string name="hintOutput">Result here</string>
+    <string name="btnSharp">Sharp</string>
+    <string name="btnNatural">Natural</string>
+    <string name="btnFlat">Flat</string>
+    <string name="notesTitle">Starting Note:</string>
+    <string name="selC">C</string>
+    <string name="selD">D</string>
+    <string name="selE">E</string>
+    <string name="selF">F</string>
+    <string name="selG">G</string>
+    <string name="selA">A</string>
+    <string name="selB">B</string>
+
+</resources>
