@@ -46,7 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btnNatural"
-                android:textSize="15sp" />
+                android:textSize="15sp" 
+                android:checked="true"/>
 
             <RadioButton
                 android:id="@+id/note1Flat"
@@ -97,7 +98,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btnNatural"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:checked="true" />
 
             <RadioButton
                 android:id="@+id/note2Flat"
@@ -126,6 +128,7 @@
             android:textSize="20dp" />
 
         <RadioGroup
+            android:id="@+id/rGrDirection"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp" >
@@ -134,7 +137,8 @@
                 android:id="@+id/btnDirUp"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@string/dirUp" />
+                android:text="@string/dirUp"
+                android:checked="true" />
 
             <RadioButton
                 android:id="@+id/btnDirDown"
