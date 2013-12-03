@@ -23,8 +23,10 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 	private String interval;
 	private String[] intervals = { "Unison", "Second", "Third", "Fourth", "Fifth", "Sixth",
 			"Seventh" };
+	private int[] halfSteps = { 0, 2, 4, 5, 7, 9, 11, 12 };
+	private int hsDist = 0, accDev = 0; // distance in half-steps, deviation caused by accidentals
 	private TextView result;
-	private RadioGroup direction;
+	private RadioGroup direction, acc1, acc2;
 	private RadioButton up, down;
 
 	@Override
@@ -39,15 +41,16 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 		reset = (Button) findViewById(R.id.btnReset);
 		result = (TextView) findViewById(R.id.output);
 		direction = (RadioGroup) findViewById(R.id.rGrDirection);
-		up = (RadioButton) findViewById(R.id.btnDirUp);
-		down = (RadioButton) findViewById(R.id.btnDirDown);
-
+		acc1 = (RadioGroup) findViewById(R.id.rGrAltNote1);
+		acc2 = (RadioGroup) findViewById(R.id.rGrAltNote2);
 		// listen to clicks
 		noteStart.setOnClickListener(this);
 		noteEnd.setOnClickListener(this);
 		calculate.setOnClickListener(this);
 		reset.setOnClickListener(this);
 		direction.setOnCheckedChangeListener(this);
+		acc1.setOnCheckedChangeListener(this);
+		acc2.setOnCheckedChangeListener(this);
 	}
 
 	@Override
@@ -87,38 +90,61 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 			noteStart.setText(R.string.selNoteBtn);
 			noteEnd.setText(R.string.selNoteBtn);
 			result.setText(R.string.hintOutput);
+			interval = null;
+			hsDist = 0; 
+			accDev = 0;
 		}
-		//RadioButton dirChoice = (RadioButton) findViewById(direction.getCheckedRadioButtonId());
-		//dir = direction.getCheckedRadioButtonId();
 	}
 
 	protected void calculate() {
 		// Calculate interval
 		intervalNum = indNoteEnd - indNoteStart;
+		hsDist = (halfSteps[indNoteEnd] - halfSteps[indNoteStart]) + accDev;
 		// Check direction and invert in case
 
 		if (dir == 1) {
 			intervalNum = 7 - intervalNum;
+			hsDist = 12 - hsDist;
 		}
 		interval = intervals[intervalNum];
-		result.setText("Your interval is a " + interval);
+		result.setText("Your interval is a " + interval + hsDist);
 	}
 
 	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		// Manage clicks in all radio buttons
-		if (group.getId() == R.id.rGrDirection) {
+		if (group.getId() == R.id.rGrAltNote1) {
+			switch (checkedId) {
+			case R.id.note1Sharp:
+				accDev -= 1;
+				break;
+			case R.id.note1Natural:
+				break;
+			case R.id.note1Flat:
+				accDev += 1;
+				break;
+			}
+		} else if (group.getId() == R.id.rGrAltNote2) {
+			switch (checkedId) {
+			case R.id.note2Sharp:
+				accDev += 1;
+				break;
+			case R.id.note2Natural:
+				break;
+			case R.id.note2Flat:
+				accDev -= 1;
+				break;
+			}
+		} else if (group.getId() == R.id.rGrDirection) {
 			switch (checkedId) {
 			case R.id.btnDirUp:
 				dir = 0;
-				//result.setText("going up");
 				break;
 			case R.id.btnDirDown:
 				dir = 1;
-				//result.setText("going down");
 				break;
 			}
 		}
-	}
 
+	}
 }
