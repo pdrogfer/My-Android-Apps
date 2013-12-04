@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,14 +23,18 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener, OnCheckedChangeListener {
 
+	//Resources res = getResources();
+	private String[] notes = { "C/Do", "D/Re", "E/Mi", "F/Fa", "G/Sol", "A/La", "B/Si" }; //res.getStringArray(R.array.notesList);
+
 	private Button noteStart, noteEnd, calculate, reset;
-	private String[] notes = { "C/Do", "D/Re", "E/Mi", "F/Fa", "G/Sol", "A/La", "B/Si" };
 	private int indNoteStart, indNoteEnd, intervalNum;
 	private int dir = 0;
 	private int quality = 0; // quality deviation
 	private String qOutput; // quality in form of string
 	public String interval;
 	// this two arrays have corresponding index for classification
+	
+	
 	private String[] intervals = { "Unison", "Second", "Third", "Fourth", "Fifth", "Sixth",
 			"Seventh" };
 	private int[] halfSteps = { 0, 2, 4, 5, 7, 9, 11 };
@@ -71,6 +76,7 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 
 		// localization
 		Locale mLocale = getResources().getConfiguration().locale;
+		
 	}
 
 	@Override

@@ -25,5 +25,17 @@
     <string name="selG">G</string>
     <string name="selA">A</string>
     <string name="selB">B</string>
+    <string-array name="notesList">
+        <item >@string/selC</item>
+        <item >@string/selD</item>
+        <item >@string/selE</item>
+        <item >@string/selF</item>
+        <item >@string/selG</item>
+        <item >@string/selA</item>
+        <item >@string/selB</item>
+    </string-array>
+    <string name="welcome_title">¡Welcome to Intervalator 2!</string>
+    <string name="welcome_subtitle">Just another silly interval calculator</string>
+    <string name="btnStart">Start</string>
 
 </resources>
