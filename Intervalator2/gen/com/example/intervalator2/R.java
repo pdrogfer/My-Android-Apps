@@ -58,26 +58,28 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int btnFlat=0x7f05000d;
-        public static final int btnNatural=0x7f05000c;
-        public static final int btnSharp=0x7f05000b;
+        public static final int btnFlat=0x7f05000f;
+        public static final int btnNatural=0x7f05000e;
+        public static final int btnSharp=0x7f05000d;
         public static final int dirDown=0x7f050007;
         public static final int dirUp=0x7f050006;
         public static final int direction=0x7f050005;
         public static final int from=0x7f050002;
         public static final int goBtn=0x7f050008;
         public static final int hintOutput=0x7f05000a;
-        public static final int notesTitle=0x7f05000e;
+        public static final int notesTitle=0x7f050010;
         public static final int resetBtn=0x7f050009;
-        public static final int selA=0x7f050014;
-        public static final int selB=0x7f050015;
-        public static final int selC=0x7f05000f;
-        public static final int selD=0x7f050010;
-        public static final int selE=0x7f050011;
-        public static final int selF=0x7f050012;
-        public static final int selG=0x7f050013;
+        public static final int selA=0x7f050016;
+        public static final int selB=0x7f050017;
+        public static final int selC=0x7f050011;
+        public static final int selD=0x7f050012;
+        public static final int selE=0x7f050013;
+        public static final int selF=0x7f050014;
+        public static final int selG=0x7f050015;
         public static final int selNoteBtn=0x7f050003;
+        public static final int textOutput=0x7f05000b;
         public static final int to=0x7f050004;
+        public static final int warning=0x7f05000c;
     }
     public static final class style {
         /** 

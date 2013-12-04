@@ -1,9 +1,14 @@
 package com.example.intervalator2;
 
+import java.util.Locale;
+
+import javax.net.ssl.ManagerFactoryParameters;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.os.Bundle;
@@ -13,6 +18,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener, OnCheckedChangeListener {
 
@@ -20,14 +26,25 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 	private String[] notes = { "C/Do", "D/Re", "E/Mi", "F/Fa", "G/Sol", "A/La", "B/Si" };
 	private int indNoteStart, indNoteEnd, intervalNum;
 	private int dir = 0;
-	private String interval;
+	private int quality = 0; // quality deviation
+	private String qOutput; // quality in form of string
+	public String interval;
+	// this two arrays have corresponding index for classification
 	private String[] intervals = { "Unison", "Second", "Third", "Fourth", "Fifth", "Sixth",
 			"Seventh" };
-	private int[] halfSteps = { 0, 2, 4, 5, 7, 9, 11, 12 };
-	private int hsDist = 0, accDev = 0; // distance in half-steps, deviation caused by accidentals
+	private int[] halfSteps = { 0, 2, 4, 5, 7, 9, 11 };
+	private String[] qualityM = { "Double-Diminished", "Diminished", "Minor", "Major", "Augmented",
+			"Double-Augmented" };
+	private String[] qualityP = { "Double-Diminished", "Diminished", "Perfect", "Augmented",
+			"Double-Augmented" };
+
+	public int hsDist = 0, accDev1 = 0, accDev2 = 0; // distance in half-steps,
+														// deviation caused by
+														// accidentals
 	private TextView result;
 	private RadioGroup direction, acc1, acc2;
 	private RadioButton up, down;
+	private Locale mLocale;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +68,9 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 		direction.setOnCheckedChangeListener(this);
 		acc1.setOnCheckedChangeListener(this);
 		acc2.setOnCheckedChangeListener(this);
+
+		// localization
+		Locale mLocale = getResources().getConfiguration().locale;
 	}
 
 	@Override
@@ -85,29 +105,53 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 			AlertDialog ad = builder.create();
 			ad.show();
 		} else if (v.getId() == R.id.btnGo) {
-			calculate();
+			if (indNoteEnd > indNoteStart) {
+				calculate();
+			}
+			else {
+				Toast.makeText(getApplicationContext(), R.string.warning, Toast.LENGTH_SHORT).show();
+			}
 		} else if (v.getId() == R.id.btnReset) {
 			noteStart.setText(R.string.selNoteBtn);
 			noteEnd.setText(R.string.selNoteBtn);
 			result.setText(R.string.hintOutput);
 			interval = null;
-			hsDist = 0; 
-			accDev = 0;
+			hsDist = 0;
+			accDev1 = 0;
+			accDev2 = 0;
+			acc1.check(R.id.note1Natural);
+			acc2.check(R.id.note2Natural);
+			direction.check(R.id.btnDirUp);
 		}
 	}
 
 	protected void calculate() {
-		// Calculate interval
+		// Calculate interval name
 		intervalNum = indNoteEnd - indNoteStart;
-		hsDist = (halfSteps[indNoteEnd] - halfSteps[indNoteStart]) + accDev;
+		// Calculate distance in semitones
+		hsDist = (halfSteps[indNoteEnd] - halfSteps[indNoteStart]) + accDev1 + accDev2;
 		// Check direction and invert in case
-
 		if (dir == 1) {
 			intervalNum = 7 - intervalNum;
 			hsDist = 12 - hsDist;
 		}
 		interval = intervals[intervalNum];
-		result.setText("Your interval is a " + interval + hsDist);
+
+		for (int i = 0; i < intervals.length; i++) {
+			if (intervals[i] == interval) {
+				quality = hsDist - halfSteps[i];
+				// case unison, fourth or fifth
+				if (i == 0 | i == 3 | i == 4) {
+					quality += 2;
+					qOutput = qualityP[quality];
+				} else {
+					quality += 3;
+					qOutput = qualityM[quality];
+				}
+				break;
+			}
+		}
+		result.setText("Your interval is a " + qOutput + " " + interval);
 	}
 
 	@Override
@@ -116,23 +160,25 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 		if (group.getId() == R.id.rGrAltNote1) {
 			switch (checkedId) {
 			case R.id.note1Sharp:
-				accDev -= 1;
+				accDev1 -= 1;
 				break;
 			case R.id.note1Natural:
+				accDev1 = 0;
 				break;
 			case R.id.note1Flat:
-				accDev += 1;
+				accDev1 += 1;
 				break;
 			}
 		} else if (group.getId() == R.id.rGrAltNote2) {
 			switch (checkedId) {
 			case R.id.note2Sharp:
-				accDev += 1;
+				accDev2 += 1;
 				break;
 			case R.id.note2Natural:
+				accDev2 = 0;
 				break;
 			case R.id.note2Flat:
-				accDev -= 1;
+				accDev2 -= 1;
 				break;
 			}
 		} else if (group.getId() == R.id.rGrDirection) {

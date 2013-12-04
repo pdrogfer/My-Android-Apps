@@ -12,6 +12,8 @@
     <string name="goBtn">Go</string>
     <string name="resetBtn">Reset</string>
     <string name="hintOutput">Result here</string>
+    <string name="textOutput">Your interval is a </string>
+    <string name="warning">The 2nd note must be above the 1st one</string>
     <string name="btnSharp">Sharp</string>
     <string name="btnNatural">Natural</string>
     <string name="btnFlat">Flat</string>
