@@ -18,19 +18,20 @@
         <TextView
             android:id="@+id/tVnote1"
             android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
+            android:layout_marginLeft="7dp"
             android:text="@string/from"
-            android:textSize="15sp" />
+            android:textSize="20sp"/>
 
         <Button
             android:id="@+id/btnNote1"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/selNoteBtn"
-            android:background="@drawable/welcome_back" />
+            android:background="@drawable/btn_back"
+            android:text="@string/selNoteBtn" />
 
         <RadioGroup
             android:id="@+id/rGrAltNote1"
@@ -42,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btnSharp"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
 
             <RadioButton
                 android:id="@+id/note1Natural"
@@ -50,14 +51,14 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="@string/btnNatural"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
 
             <RadioButton
                 android:id="@+id/note1Flat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btnFlat"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
         </RadioGroup>
     </LinearLayout>
 
@@ -73,17 +74,19 @@
         <TextView
             android:id="@+id/tVnote2"
             android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="7dp"
             android:gravity="center_vertical"
             android:text="@string/to"
-            android:textSize="15sp" />
+            android:textSize="20sp"/>
 
         <Button
             android:id="@+id/btnNote2"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/btn_back"
             android:text="@string/selNoteBtn" />
 
         <RadioGroup
@@ -96,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btnSharp"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
 
             <RadioButton
                 android:id="@+id/note2Natural"
@@ -104,14 +107,14 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="@string/btnNatural"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
 
             <RadioButton
                 android:id="@+id/note2Flat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btnFlat"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
         </RadioGroup>
     </LinearLayout>
 
@@ -120,6 +123,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/row2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:orientation="horizontal"
         android:paddingTop="20dp" >
 
@@ -130,7 +135,7 @@
             android:layout_marginLeft="20dp"
             android:gravity="center_vertical"
             android:text="@string/direction"
-            android:textSize="20dp" />
+            android:textSize="20sp"/>
 
         <RadioGroup
             android:id="@+id/rGrDirection"
@@ -159,6 +164,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/row3"
         android:orientation="horizontal"
+        android:gravity="center"
         android:paddingTop="20dp" >
 
         <Button
@@ -166,6 +172,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/btn_back"
             android:text="@string/goBtn" />
 
         <Button
@@ -173,6 +180,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/btn_back"
             android:text="@string/resetBtn" />
     </LinearLayout>
 
@@ -182,8 +190,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/row4"
         android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
         android:gravity="center_vertical"
         android:hint="@string/hintOutput"
-        android:textSize="20dp" />
+        android:textSize="25dp" />
 
 </RelativeLayout>

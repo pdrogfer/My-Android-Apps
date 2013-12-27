@@ -9,9 +9,13 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Button;
@@ -23,9 +27,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener, OnCheckedChangeListener {
 
-	//Resources res = getResources();
-	private String[] notes = { "C/Do", "D/Re", "E/Mi", "F/Fa", "G/Sol", "A/La", "B/Si" }; //res.getStringArray(R.array.notesList);
-
+	// Resources res = getResources();
 	private Button noteStart, noteEnd, calculate, reset;
 	private int indNoteStart, indNoteEnd, intervalNum;
 	private int dir = 0;
@@ -33,11 +35,11 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 	private String qOutput; // quality in form of string
 	public String interval;
 	// this two arrays have corresponding index for classification
-	
-	
+
 	private String[] intervals = { "Unison", "Second", "Third", "Fourth", "Fifth", "Sixth",
 			"Seventh" };
 	private int[] halfSteps = { 0, 2, 4, 5, 7, 9, 11 };
+	private String[] notes = { "C/Do", "D/Re", "E/Mi", "F/Fa", "G/Sol", "A/La", "B/Si" }; // res.getStringArray(R.array.notesList);
 	private String[] qualityM = { "Double-Diminished", "Diminished", "Minor", "Major", "Augmented",
 			"Double-Augmented" };
 	private String[] qualityP = { "Double-Diminished", "Diminished", "Perfect", "Augmented",
@@ -51,11 +53,27 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 	private RadioButton up, down;
 	private Locale mLocale;
 
+	// for sound
+	private SoundPool soundPool;
+	private int soundC, soundCS, soundD, soundDS, soundE, soundF, soundFS, soundG, soundGS, soundA,
+			soundAS, soundB;
+	boolean loaded = false;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		buttonsSetUp();
+		soundSetup();
+		doSound(3); // start the silent loop
+
+		// localization
+		Locale mLocale = getResources().getConfiguration().locale;
+
+	}
+
+	private void buttonsSetUp() {
 		// link variables to widgets
 		noteStart = (Button) findViewById(R.id.btnNote1);
 		noteEnd = (Button) findViewById(R.id.btnNote2);
@@ -74,9 +92,32 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 		acc1.setOnCheckedChangeListener(this);
 		acc2.setOnCheckedChangeListener(this);
 
-		// localization
-		Locale mLocale = getResources().getConfiguration().locale;
-		
+	}
+
+	private void soundSetup() {
+		// Set the hardware buttons to control the music
+		this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+		// Load the sounds
+		soundPool = new SoundPool(12, AudioManager.STREAM_MUSIC, 0);
+		soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() {
+			@Override
+			public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+				loaded = true;
+			}
+		});
+		// the load function returns an int, the index of the loaded sound
+		soundC = soundPool.load(this, R.raw.c, 1);
+		soundCS = soundPool.load(this, R.raw.c_s, 1);
+		soundD = soundPool.load(this, R.raw.d, 1);
+		soundDS = soundPool.load(this, R.raw.d_s, 1);
+		soundE = soundPool.load(this, R.raw.e, 1);
+		soundF = soundPool.load(this, R.raw.f, 1);
+		soundFS = soundPool.load(this, R.raw.f_s, 1);
+		soundG = soundPool.load(this, R.raw.g, 1);
+		soundGS = soundPool.load(this, R.raw.g_s, 1);
+		soundA = soundPool.load(this, R.raw.a, 1);
+		soundAS = soundPool.load(this, R.raw.a_s, 1);
+		soundB = soundPool.load(this, R.raw.b, 1);
 	}
 
 	@Override
@@ -96,26 +137,29 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							// close and store note name TODO
+							// close and store note name and index
 							dialog.dismiss();
 							if (btnID == R.id.btnNote1) {
 								noteStart.setText(notes[which]);
 								indNoteStart = which;
+								doSound(0);// play the selected note
 							} else {
 								noteEnd.setText(notes[which]);
 								indNoteEnd = which;
+								doSound(1);
 							}
-
 						}
 					});
 			AlertDialog ad = builder.create();
 			ad.show();
+
 		} else if (v.getId() == R.id.btnGo) {
 			if (indNoteEnd > indNoteStart) {
+				doSound(2);
 				calculate();
-			}
-			else {
-				Toast.makeText(getApplicationContext(), R.string.warning, Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(getApplicationContext(), R.string.warning, Toast.LENGTH_SHORT)
+						.show();
 			}
 		} else if (v.getId() == R.id.btnReset) {
 			noteStart.setText(R.string.selNoteBtn);
@@ -175,6 +219,7 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 				accDev1 += 1;
 				break;
 			}
+			doSound(0);
 		} else if (group.getId() == R.id.rGrAltNote2) {
 			switch (checkedId) {
 			case R.id.note2Sharp:
@@ -187,6 +232,7 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 				accDev2 -= 1;
 				break;
 			}
+			doSound(1);
 		} else if (group.getId() == R.id.rGrDirection) {
 			switch (checkedId) {
 			case R.id.btnDirUp:
@@ -199,4 +245,44 @@ public class MainActivity extends Activity implements OnClickListener, OnChecked
 		}
 
 	}
+
+	public void doSound(int selNote) {
+		// selNote = 0 to play the first note, 1 the last one, 2 to play both, 3
+		// to play a silent loop to solve the 'first sound' problem of
+		// Soundpool.
+		// To get the volume for reproduction:
+		AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+		float actualVolume = (float) audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+		float maxVolume = (float) audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+		float volume = actualVolume / maxVolume;
+		if (loaded) {
+			if (selNote == 0) {
+				int i = halfSteps[indNoteStart] + (-accDev1);
+				soundPool.play(i, volume, volume, 1, 0, 1f);
+			}
+			if (selNote == 1) {
+				int j = halfSteps[indNoteEnd] + accDev2;
+				soundPool.play(j, volume, volume, 1, 0, 1f);
+			}
+			if (selNote == 2) {
+				doSound(0);
+				doSound(1);
+			}
+			if (selNote == 3) {
+				soundPool.play(halfSteps[0], 0, 0, 1, -1, 1f);
+				Log.i("SOUND", "playing silent loop");
+				Toast.makeText(getApplicationContext(), "playing silent loop", Toast.LENGTH_SHORT)
+				.show();
+			}
+		}
+
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		soundPool.release();
+	}
+
 }

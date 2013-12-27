@@ -9,7 +9,7 @@ package com.example.intervalator2;
 
 public final class R {
     public static final class array {
-        public static final int notesList=0x7f060000;
+        public static final int notesList=0x7f070000;
     }
     public static final class attr {
     }
@@ -20,8 +20,8 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
         public static final int btn_back=0x7f020000;
@@ -31,69 +31,83 @@ public final class R {
         public static final int welcome_msg_backgr=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f09001a;
-        public static final int btnDirDown=0x7f090012;
-        public static final int btnDirUp=0x7f090011;
-        public static final int btnGo=0x7f090014;
-        public static final int btnNote1=0x7f090002;
-        public static final int btnNote2=0x7f090009;
-        public static final int btnReset=0x7f090015;
-        public static final int btnStart=0x7f090019;
-        public static final int note1Flat=0x7f090006;
-        public static final int note1Natural=0x7f090005;
-        public static final int note1Sharp=0x7f090004;
-        public static final int note2Flat=0x7f09000d;
-        public static final int note2Natural=0x7f09000c;
-        public static final int note2Sharp=0x7f09000b;
-        public static final int output=0x7f090016;
-        public static final int rGrAltNote1=0x7f090003;
-        public static final int rGrAltNote2=0x7f09000a;
-        public static final int rGrDirection=0x7f090010;
-        public static final int row1=0x7f090000;
-        public static final int row2=0x7f090007;
-        public static final int row3=0x7f09000e;
-        public static final int row4=0x7f090013;
-        public static final int tVdirection=0x7f09000f;
-        public static final int tVnote1=0x7f090001;
-        public static final int tVnote2=0x7f090008;
-        public static final int textView1=0x7f090017;
-        public static final int textView2=0x7f090018;
+        public static final int action_settings=0x7f0a001a;
+        public static final int btnDirDown=0x7f0a0012;
+        public static final int btnDirUp=0x7f0a0011;
+        public static final int btnGo=0x7f0a0014;
+        public static final int btnNote1=0x7f0a0002;
+        public static final int btnNote2=0x7f0a0009;
+        public static final int btnReset=0x7f0a0015;
+        public static final int btnStart=0x7f0a0019;
+        public static final int note1Flat=0x7f0a0006;
+        public static final int note1Natural=0x7f0a0005;
+        public static final int note1Sharp=0x7f0a0004;
+        public static final int note2Flat=0x7f0a000d;
+        public static final int note2Natural=0x7f0a000c;
+        public static final int note2Sharp=0x7f0a000b;
+        public static final int output=0x7f0a0016;
+        public static final int rGrAltNote1=0x7f0a0003;
+        public static final int rGrAltNote2=0x7f0a000a;
+        public static final int rGrDirection=0x7f0a0010;
+        public static final int row1=0x7f0a0000;
+        public static final int row2=0x7f0a0007;
+        public static final int row3=0x7f0a000e;
+        public static final int row4=0x7f0a0013;
+        public static final int tVdirection=0x7f0a000f;
+        public static final int tVnote1=0x7f0a0001;
+        public static final int tVnote2=0x7f0a0008;
+        public static final int textView1=0x7f0a0017;
+        public static final int textView2=0x7f0a0018;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int welcome=0x7f030001;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
+        public static final int main=0x7f090000;
+    }
+    public static final class raw {
+        public static final int a=0x7f040000;
+        public static final int a_s=0x7f040001;
+        public static final int b=0x7f040002;
+        public static final int c=0x7f040003;
+        public static final int c_s=0x7f040004;
+        public static final int d=0x7f040005;
+        public static final int d_s=0x7f040006;
+        public static final int e=0x7f040007;
+        public static final int f=0x7f040008;
+        public static final int f_s=0x7f040009;
+        public static final int g=0x7f04000a;
+        public static final int g_s=0x7f04000b;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int btnFlat=0x7f05000f;
-        public static final int btnNatural=0x7f05000e;
-        public static final int btnSharp=0x7f05000d;
-        public static final int btnStart=0x7f05001a;
-        public static final int dirDown=0x7f050007;
-        public static final int dirUp=0x7f050006;
-        public static final int direction=0x7f050005;
-        public static final int from=0x7f050002;
-        public static final int goBtn=0x7f050008;
-        public static final int hintOutput=0x7f05000a;
-        public static final int notesTitle=0x7f050010;
-        public static final int resetBtn=0x7f050009;
-        public static final int selA=0x7f050016;
-        public static final int selB=0x7f050017;
-        public static final int selC=0x7f050011;
-        public static final int selD=0x7f050012;
-        public static final int selE=0x7f050013;
-        public static final int selF=0x7f050014;
-        public static final int selG=0x7f050015;
-        public static final int selNoteBtn=0x7f050003;
-        public static final int textOutput=0x7f05000b;
-        public static final int to=0x7f050004;
-        public static final int warning=0x7f05000c;
-        public static final int welcome_subtitle=0x7f050019;
-        public static final int welcome_title=0x7f050018;
+        public static final int action_settings=0x7f060001;
+        public static final int app_name=0x7f060000;
+        public static final int btnFlat=0x7f06000f;
+        public static final int btnNatural=0x7f06000e;
+        public static final int btnSharp=0x7f06000d;
+        public static final int btnStart=0x7f06001a;
+        public static final int dirDown=0x7f060007;
+        public static final int dirUp=0x7f060006;
+        public static final int direction=0x7f060005;
+        public static final int from=0x7f060002;
+        public static final int goBtn=0x7f060008;
+        public static final int hintOutput=0x7f06000a;
+        public static final int notesTitle=0x7f060010;
+        public static final int resetBtn=0x7f060009;
+        public static final int selA=0x7f060016;
+        public static final int selB=0x7f060017;
+        public static final int selC=0x7f060011;
+        public static final int selD=0x7f060012;
+        public static final int selE=0x7f060013;
+        public static final int selF=0x7f060014;
+        public static final int selG=0x7f060015;
+        public static final int selNoteBtn=0x7f060003;
+        public static final int textOutput=0x7f06000b;
+        public static final int to=0x7f060004;
+        public static final int warning=0x7f06000c;
+        public static final int welcome_subtitle=0x7f060019;
+        public static final int welcome_title=0x7f060018;
     }
     public static final class style {
         /** 
@@ -117,10 +131,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f080001;
     }
 }

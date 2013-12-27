@@ -21,7 +21,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:typeface="normal"
             android:fontFamily="Roboto-LightItalic"
-            android:textSize="30sp" />
+            android:textSize="35sp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -29,11 +29,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="@string/welcome_subtitle"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
     </LinearLayout>
 
     <RelativeLayout
